@@ -1,81 +1,41 @@
 import streamlit as st
 
-# Configuración de la página
-st.set_page_config(
-    page_title="Hitos de Detección de Fraude",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.set_page_config(page_title="Sesion 2 | ISIL", layout="centered")
+st.title("Detección de transacciones fraudulentas | Timeline")
+st.write("Autor: Adrian Ticona | ISIL")
+st.write("Interactúa con la barra deslizante para explorar los hitos más importantes en la detección de transacciones fraudulentas.")
 
-# --- Definición de los Eventos ---
-
-# Los datos de los 5 eventos, incluyendo título, descripción y la ruta de la imagen.
-# NOTA: Se han actualizado las rutas de las imágenes a "timeline1.png" a "timeline5.png"
-# La ruta de la imagen es relativa a la ubicación del archivo app.py en GitHub.
-eventos = {
-    1: {
-        "titulo": "1. Sistemas de Puntuación de Fraude (FICO y Similares)",
-        "descripcion": "Sentó las bases metodológicas al introducir modelos estadísticos para asignar una puntuación de riesgo a transacciones e individuos, un precursor fundamental para la detección predictiva.",
-        "imagen_path": "timeline_images/timeline1.png"
-    },
-    2: {
-        "titulo": "2. Autenticación de Doble Factor (2FA)",
-        "descripcion": "Cambió el foco hacia la prevención activa de la toma de cuentas (ATO) al requerir dos o más factores de verificación. Dificultó el acceso a los defraudadores incluso con la contraseña robada.",
-        "imagen_path": "timeline_images/timeline2.png"
-    },
-    3: {
-        "titulo": "3. Adopción del Chip EMV (Chip y PIN)",
-        "descripcion": "La migración del riesgo. Eliminó el fraude físico por clonación en el punto de venta al usar chips criptográficos. Esto obligó a la industria a mejorar rápidamente las defensas en el comercio electrónico.",
-        "imagen_path": "timeline_images/timeline3.png"
-    },
-    4: {
-        "titulo": "4. Uso de Machine Learning (ML) e Inteligencia Artificial (IA)",
-        "descripcion": "Permitió la detección de fraude en tiempo real con alta precisión. Los algoritmos de IA y ML pueden analizar patrones sutiles en vastos volúmenes de datos, adaptándose rápidamente a nuevas tácticas.",
-        "imagen_path": "timeline_images/timeline4.png"
-    },
-    5: {
-        "titulo": "5. Detección de Huellas Digitales de Dispositivos (Device Fingerprinting)",
-        "descripcion": "Crea un identificador único para cada dispositivo (PC, móvil) basado en más de un centenar de parámetros. Es esencial para identificar dispositivos de riesgo y combatir el fraude de transacciones no presentes (CNP).",
-        "imagen_path": "timeline_images/timeline5.png"
-    }
+# URLs de imágenes en GitHub
+# Se asume que las imágenes timeline1.png a timeline5.png están disponibles en esta URL
+base_url = "https://raw.githubusercontent.com/adrianticonatapia-debug/timeline_s1/main/timeline_images/"
+imagenes = {
+    1: base_url + "timeline1.png",
+    2: base_url + "timeline2.png",
+    3: base_url + "timeline3.png",
+    4: base_url + "timeline4.png",
+    5: base_url + "timeline5.png"
 }
 
-# --- Interfaz de Streamlit ---
-
-st.title("Hitos Trascendentales en la Detección de Transacciones Fraudulentas")
-st.markdown("---")
-
-# Slider para seleccionar el evento
-# El slider va del 1 al 5.
-evento_seleccionado_key = st.slider(
-    "Selecciona un Hito en la Línea de Tiempo:",
+# Slider
+opcion = st.slider(
+    "Selecciona un punto del timeline",
     min_value=1,
     max_value=5,
-    step=1,
-    format="Hito N° %d",
-    help="Utiliza este control para navegar por los 5 hitos principales."
+    value=1,
+    step=1
 )
 
-# Obtener los datos del evento seleccionado
-data_evento = eventos[evento_seleccionado_key]
+# Mostrar imagen según slider
+st.image(imagenes[opcion], use_container_width=True)
 
-st.markdown("---")
-
-# Mostrar el contenido del evento seleccionado
-col1, col2 = st.columns([1, 2])
-
-with col1:
-    # Cargar y mostrar la imagen.
-    # El archivo debe estar en la carpeta 'timeline_images' en el repositorio.
-    st.image(
-        data_evento["imagen_path"],
-        caption=data_evento["titulo"],
-        use_column_width=True
-    )
-
-with col2:
-    st.header(data_evento["titulo"])
-    st.info(data_evento["descripcion"])
-    
-st.markdown("---")
-st.caption("Asegúrate de que las imágenes 'timeline1.png' a 'timeline5.png' estén en la carpeta 'timeline_images' de tu repositorio para que se visualicen correctamente en Streamlit Cloud.")
+# Mostrar información del hito
+if opcion == 1:
+    st.info(" **1950 – Test de Turing** | Alan Turing propone un criterio para evaluar la inteligencia de una máquina.")
+if opcion == 2:
+    st.info(" **1956 – Nace el campo de la IA en Dartmouth** | John McCarthy acuña el término *Inteligencia Artificial*.")
+if opcion == 3:
+    st.info(" **1997 – Deep Blue vence a Garry Kasparov** | Primer triunfo de una máquina sobre un campeón mundial de ajedrez.")
+if opcion == 4:
+    st.info(" **2012 – Revolución del Deep Learning (AlexNet)** | Una red neuronal profunda supera ampliamente otros métodos en reconocimiento de imágenes.")
+if opcion == 5:
+    st.info(" **2022 – Avances en modelos generativos** | Llegan tecnologías como ChatGPT, Gemini, Agentes y más.")
