@@ -1,58 +1,59 @@
 import streamlit as st
 
-# --- Estética: Usamos layout="wide" para un mejor despliegue de contenido ---
-st.set_page_config(page_title="Sesion 2 | ISIL", layout="wide") 
+# --- Estética: Usamos layout="wide" para una mejor visualización de la línea de tiempo ---
+st.set_page_config(page_title="Detección de Fraude | ISIL", layout="wide") 
 
-st.title("Desarrollo de la IA | Línea de Tiempo de Hitos Clave")
+st.title("Detección de Transacciones Fraudulentas | Línea de Tiempo de Hitos Clave")
 st.markdown("---")
-st.write("Autor: Jesus Alvarado Huayhuaz | ISIL")
-st.write("Interactúa con la barra deslizante para explorar los hitos más importantes en la historia de la Inteligencia Artificial, desde sus bases filosóficas hasta la era de los modelos generativos.")
+# Autor actualizado según la solicitud del usuario
+st.write("Autor: Adrian Ticona | ISIL") 
+st.write("Explora los 5 eventos tecnológicos que transformaron la lucha contra el fraude bancario, desde la modelización estadística hasta la inteligencia artificial en tiempo real.")
 st.markdown("---")
 
 # --- URLs y Definición de Hitos con Información Ampliada ---
 
-# Se usa la nueva URL de GitHub proporcionada por el usuario
+# Se usa la URL de GitHub proporcionada por el usuario
 base_url = "https://raw.githubusercontent.com/adrianticonatapia-debug/timeline_s1/main/timeline_images/"
 
 hitos = {
     1: {
-        "año": "1950",
-        "nombre": "El Test de Turing: La Pregunta de la Máquina Pensante",
-        "concepto": "Alan Turing propone un criterio fundamental para evaluar si una máquina puede exhibir un comportamiento conversacional indistinguible del humano.",
-        "descripcion": "En su artículo seminal 'Computing Machinery and Intelligence', Turing propuso el 'Juego de Imitación' (Test de Turing). Este no buscaba medir la inteligencia pura, sino la capacidad de una máquina para engañar a un evaluador humano, estableciendo el listón para la Inteligencia Artificial como campo filosófico y de ingeniería. Sentó las bases de la IA simbólica.",
-        "figura_clave": "Alan Turing",
+        "año": "Finales del S. XX",
+        "nombre": "Sistemas de Puntuación de Riesgo (FICO)",
+        "concepto": "Implementación de modelos estadísticos para asignar una puntuación de riesgo a individuos, sentando las bases de la detección predictiva.",
+        "descripcion": "El desarrollo de modelos como el FICO Score introdujo la metodología de usar datos históricos y algoritmos para evaluar el riesgo en tiempo real. Aunque inicialmente se centró en la solvencia crediticia, el concepto fue adaptado rápidamente para identificar comportamientos anómalos en transacciones bancarias, migrando de reglas fijas a modelos predictivos.",
+        "figura_clave": "Fair Isaac Corporation (FICO) y pioneros de la estadística.",
         "imagen_url": base_url + "timeline1.png"
     },
     2: {
-        "año": "1956",
-        "nombre": "El Nacimiento Oficial de la IA: Conferencia de Dartmouth",
-        "concepto": "John McCarthy acuña el término *Inteligencia Artificial* en el 'Dartmouth Summer Research Project on Artificial Intelligence'.",
-        "descripcion": "Esta conferencia de verano fue el evento fundacional que reunió a los principales visionarios (McCarthy, Minsky, Simon, Newell) para formalizar la investigación. El nombre y la visión definieron el campo, promoviendo la idea de que 'cada aspecto del aprendizaje o cualquier otra característica de la inteligencia puede, en principio, ser descrita con tanta precisión que una máquina puede ser simulada para llevarla a cabo'.",
-        "figura_clave": "John McCarthy, Marvin Minsky",
+        "año": "Inicios del 2000",
+        "nombre": "Autenticación de Doble Factor (2FA)",
+        "concepto": "Requerir dos o más factores de verificación (algo que se sabe, algo que se tiene) para el acceso a cuentas y la ejecución de transacciones.",
+        "descripcion": "Este desarrollo cambió el enfoque de la detección a la prevención activa. Al exigir un segundo código de verificación (a menudo enviado al móvil del usuario), se hizo mucho más difícil para los defraudadores realizar un 'Account Takeover' (ATO) o completar transacciones no autorizadas, incluso si habían robado la contraseña principal.",
+        "figura_clave": "Pioneros de la seguridad en banca online y SMS/Token.",
         "imagen_url": base_url + "timeline2.png"
     },
     3: {
-        "año": "1997",
-        "nombre": "Deep Blue Derrota al Campeón Mundial de Ajedrez",
-        "concepto": "Deep Blue de IBM se convierte en la primera máquina en vencer a un campeón mundial de ajedrez, Garry Kasparov, en un formato de torneo.",
-        "descripcion": "Esta victoria fue un hito simbólico. No se basó en la intuición, sino en la fuerza bruta de cálculo. Deep Blue podía evaluar 200 millones de posiciones por segundo. Demostró la superioridad de los sistemas de búsqueda complejos y el procesamiento paralelo para resolver problemas bien definidos, marcando la primera gran victoria de la IA sobre el intelecto humano en un juego de estrategia.",
-        "figura_clave": "Garry Kasparov, Feng-hsiung Hsu (Diseñador de Deep Blue)",
+        "año": "2000 - 2015",
+        "nombre": "Adopción Global del Chip EMV",
+        "concepto": "Transición de la banda magnética fácilmente clonable a tarjetas con un chip que genera un código criptográfico único para cada transacción.",
+        "descripcion": "El chip EMV (Europay, Mastercard, Visa) eliminó casi por completo el fraude físico por clonación ('skimming') en el punto de venta. Este éxito tuvo el efecto secundario de forzar a los criminales a migrar sus esfuerzos hacia las transacciones 'Card-Not-Present' (CNP), como las compras en línea, acelerando la necesidad de soluciones avanzadas en el comercio electrónico.",
+        "figura_clave": "Consorcio EMV (Europay, Mastercard, Visa).",
         "imagen_url": base_url + "timeline3.png"
     },
     4: {
-        "año": "2012",
-        "nombre": "La Revolución del Deep Learning (AlexNet)",
-        "concepto": "AlexNet, una red neuronal profunda, gana ImageNet por un margen significativo, desencadenando el auge del Aprendizaje Profundo.",
-        "descripcion": "El equipo de Alex Krizhevsky y Geoffrey Hinton mostró el verdadero potencial de las Redes Neuronales Convolucionales (CNN) combinadas con el poder de procesamiento de las GPUs y grandes conjuntos de datos (ImageNet). Este hito fue crucial, ya que el enorme salto en precisión demostró que las arquitecturas profundas podían resolver tareas de visión por computadora que antes parecían inalcanzables, impulsando la IA moderna.",
-        "figura_clave": "Alex Krizhevsky, Geoffrey Hinton",
+        "año": "Década de 2010",
+        "nombre": "El Auge de Machine Learning (ML) y Deep Learning (DL)",
+        "concepto": "Uso de algoritmos de Aprendizaje Automático para analizar patrones de comportamiento y datos masivos con el fin de identificar anomalías sutiles en tiempo real.",
+        "descripcion": "Los modelos de IA y ML superaron las limitaciones de las reglas fijas. Son capaces de procesar la hora, ubicación, monto, producto y comportamiento histórico del usuario para detectar transacciones que se desvían de la norma con una precisión mucho mayor, reduciendo drásticamente tanto el fraude como los falsos positivos.",
+        "figura_clave": "Científicos de datos y equipos de riesgo bancario.",
         "imagen_url": base_url + "timeline4.png"
     },
     5: {
-        "año": "2022",
-        "nombre": "La Era de la IA Generativa y los Grandes Modelos de Lenguaje (LLMs)",
-        "concepto": "Popularización masiva de modelos generativos como ChatGPT y Gemini, llevando capacidades avanzadas de razonamiento y creatividad al público general.",
-        "descripcion": "El lanzamiento de los LLMs capaces de mantener conversaciones coherentes, escribir código, resumir textos y generar imágenes (IA de difusión) cambió la interacción pública con la tecnología. Estos modelos, entrenados con miles de millones de parámetros, demuestran capacidades emergentes, abriendo la puerta a los 'Agentes de IA' y transformando industrias completas a un ritmo sin precedentes.",
-        "figura_clave": "Diversos equipos de OpenAI, Google, Meta y otros.",
+        "año": "Presente",
+        "nombre": "Detección de Huellas Digitales de Dispositivos (Device Fingerprinting)",
+        "concepto": "Creación de un identificador único y persistente de un dispositivo basado en sus características técnicas para evaluar su nivel de confianza.",
+        "descripcion": "Esta tecnología recopila cientos de parámetros técnicos (tipo de fuente, resolución, OS, etc.) para crear una 'huella' que persiste incluso si el usuario borra cookies o cambia de IP. Es una herramienta crítica para combatir el fraude CNP y de 'mulas de dinero' al identificar instantáneamente si un dispositivo es sospechoso o si ha sido visto en transacciones fraudulentas previas.",
+        "figura_clave": "Empresas de ciberseguridad y plataformas antifraude.",
         "imagen_url": base_url + "timeline5.png"
     }
 }
@@ -78,7 +79,7 @@ data_hito = hitos[opcion]
 col1, col2 = st.columns([1, 2.5])
 
 with col1:
-    # Muestra el año de manera destacada
+    # Muestra el año/periodo de manera destacada
     st.header(data_hito["año"])
     
     # Mostrar la imagen
@@ -86,10 +87,13 @@ with col1:
 
 with col2:
     # Título y Subtítulo
-    st.subheader(f":sparkles: {data_hito['nombre']}")
+    st.subheader(f":lock: {data_hito['nombre']}")
     st.caption(f"**Concepto Central:** {data_hito['concepto']}")
 
     # Información detallada
     st.markdown("---")
     st.write(data_hito["descripcion"])
+    
+    # Figura clave destacada
+    st.markdown(f"**🛡️ Actores Clave:** *{data_hito['figura_clave']}*")
     
